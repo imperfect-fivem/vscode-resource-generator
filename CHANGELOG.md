@@ -8,10 +8,12 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 - Soon...
 
-## 0.0.4
+## [0.0.4] - 2024-05-09
 
-Multiple Templates
+### Added
 
-## 0.0.3
+- Multiple Templates
+
+## [0.0.3] - 2021-09-08
 
 - Initial release
