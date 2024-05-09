@@ -1,36 +1,41 @@
 # Resource-generator-FiveM-VS-code
+
+# Credits (Original Author)
+
+Origin could be found [here](https://github.com/Bentozox/Resource-generator-FiveM-VS-code).
+
+**Bentozox.**
+
+- Contact
+  - Discord : BENTOZOX#6743
+  - GitHub : https://github.com/Bentozox
+  - Twitter : https://twitter.com/Bentozox
+
 # Table of contents
-  * [Description](#description)
-  * [Installation](#installation)
-  * [How to use it ?](#How-to-use-it-?)
+
+- [Description](#description)
+- [Installation](#installation)
+- [How to use it ?](#How-to-use-it-?)
 
 # Description
-    This extension help you creating a new basic lua resource.
-    
+
+VSCode extension that creates a FiveM lua resource.
+
 # Installation
-    Avalaible on VS code market place : https://marketplace.visualstudio.com/items?itemName=ResourceGeneratorFiveM.resource-generator-fivem
+
+https://github.com/imperfect-fivem/vscode-resource-generator/releases/latest
 
 # How to use it ?
-    Using right click on Folder : 
-      - Select a folder by right click in the file explorer;
-      - Now left click on ``Generate FiveM resource``;
-      - Creation now starting. Follow the instructions one by one.
-    Using Command line :
-      - Open the CMD with ``CTRL + Shift + P``;
-      - Search for ``Generate FiveM resource`` and choose it;
-      - Creation now starting. Follow the instructions one by one.
 
+Using right click on Folder :
+  - Select a folder by right click in the file explorer;
+  - Now left click on ``Generate FiveM resource``;
+  - Creation now starting. Follow the instructions one by one.
+Using Command line :
+  - Open the CMD with ``CTRL + Shift + P``;
+  - Search for ``Generate FiveM resource`` and choose it;
+  - Creation now starting. Follow the instructions one by one.
 
-  <img src="resource-generator-fivem/preview/video-preview.gif" width="800" >
-      
+---
 
-     
-### 1.0.0
-
-First release of FiveM resource generator
-
-
------------------------------------------------------------------------------------------------------------
-
-
-**Enjoy!**    
+**Enjoy!**

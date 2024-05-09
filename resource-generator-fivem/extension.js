@@ -51,7 +51,7 @@ var InputData = {
   },
   author: {
     title: "Resource author",
-    placeholder: "Bentozox, ...",
+    placeholder: "m-imperfect, ...",
     nextInput: "version",
     value: "",
     input: null,
