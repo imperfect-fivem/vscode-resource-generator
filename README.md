@@ -12,6 +12,5 @@ Download the extension [vsix](https://github.com/imperfect-fivem/vscode-resource
 - Now left click on `Generate FiveM resource`;
 - Creation now starting. Follow the instructions one by one.
 
-## Credits & Original Author
-
-Origin [Bentozox](https://github.com/Bentozox) work could be found [here](https://github.com/Bentozox/Resource-generator-FiveM-VS-code).
+## Original Work Credits
+Original [Bentozox](https://github.com/Bentozox) work could be found [here](https://github.com/Bentozox/Resource-generator-FiveM-VS-code).

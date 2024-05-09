@@ -1,8 +1,7 @@
 # Change Log
 
-All notable changes to the "fivem-resource-generator" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+All notable changes are documented in this file.
+Structure: [Keep a Changelog](http://keepachangelog.com/) recommendations.
 
 ## [Unreleased]
 

@@ -15,7 +15,7 @@
     "url": "https://github.com/imperfect-fivem/vscode-resource-generator"
   },
   "icon": "preview/fivem-resource.png",
-  "homepage": "https://github.com/imperfect-fivem/vscode-resource-generator",
+  "homepage": "https://github.com/imperfect-fivem/vscode-resource-generator#readme",
   "license": "GPLv3",
   "keywords": [
     "fivem",
@@ -28,7 +28,7 @@
   "activationEvents": [
     "onCommand:resource-generator-fivem.generate-resource"
   ],
-  "main": "./extension.js",
+  "main": "./extension/main.js",
   "files": [
     "template/fxmanifest.lua"
   ],
