@@ -1,7 +1,4 @@
 const vscode = require("vscode");
-const configuration = vscode.workspace.getConfiguration(
-  "FivemResourceGenerator"
-);
 const { addQuickPick, addInputBox, promptInputs } = require("./prompt");
 const create = require("./create");
 
@@ -10,7 +7,11 @@ const create = require("./create");
  */
 function activate(context) {
   addQuickPick("template", "Resource Template", "choose one...", () =>
-    Object.keys(configuration.get("templates")).map((template) => {
+    Object.keys(
+      vscode.workspace
+        .getConfiguration("FivemResourceGenerator")
+        .get("templates")
+    ).map((template) => {
       return { label: template };
     })
   );
@@ -24,10 +25,17 @@ function activate(context) {
     "resource-generator-fivem.generate-resource",
     function (uri) {
       promptInputs((data) => {
-        data.templatePath = configuration
+        (data.templatePath = vscode.workspace
+          .getConfiguration("FivemResourceGenerator")
           .get("templates")
-          [data.template].replace("::templates::", templatesPath),
-        create(data, uri.fsPath).catch(err => vscode.window.showErrorMessage(err.message));
+          [data.template].replace("::templates::", templatesPath)),
+          create(data, uri.fsPath)
+            .then((data) =>
+              vscode.window.showInformationMessage(
+                `Created a FiveM lua resource '${data.name}'.`
+              )
+            )
+            .catch((err) => vscode.window.showErrorMessage(err.message));
       });
     }
   );

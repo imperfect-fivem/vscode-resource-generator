@@ -1,7 +1,4 @@
 const vscode = require("vscode");
-const defaults = vscode.workspace.getConfiguration(
-  "FivemResourceGenerator.defaults"
-);
 
 /** @type {{ key: string, prompt: Function }[]} */
 const inputs = [];
@@ -11,8 +8,7 @@ let index = 0,
 function _setDatum(key, value) {
   data[key] = value;
   if (++index < inputs.length) inputs[index].prompt();
-  else
-    callback(data);
+  else callback(data);
 }
 
 function addQuickPick(key, title, placeholder, itemsFetcher) {
@@ -42,6 +38,9 @@ function addInputBox(key, title, placeholder) {
   box.onDidAccept(function () {
     let value = box.value.trim();
     if (value.length == 0) {
+      let defaults = vscode.workspace.getConfiguration(
+        "FivemResourceGenerator.defaults"
+      );
       if (!defaults.has(key)) {
         vscode.window.showErrorMessage(
           `You need to complete '${title}' input.`

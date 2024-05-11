@@ -1,4 +1,3 @@
-const vscode = require("vscode");
 const { mkdirSync, statSync } = require("fs");
 const { getGeneratedFolder, writeFolder } = require("./folder");
 
@@ -21,9 +20,7 @@ async function create(data, url) {
   mkdirSync(`${url}/${data.name}`);
   writeFolder(`${url}/${data.name}`, folder);
 
-  vscode.window.showInformationMessage(
-    `Created a FiveM lua resource '${data.name}'.`
-  );
+  return data;
 }
 
 module.exports = create;
