@@ -1,9 +1,9 @@
 fx_version 'cerulean'
 game 'gta5'
 
-description "${description}"
-author "${author}"
-version "${version}"
+description "{{description}}"
+author "{{author}}"
+version "{{version}}"
 
 shared_scripts {
 	'shared/*.lua'

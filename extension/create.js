@@ -1,24 +1,38 @@
-const { mkdirSync, statSync } = require("fs");
-const { getGeneratedFolder, writeFolder } = require("./folder");
+const { mkdirSync, statSync, existsSync, readFileSync, writeFileSync } = require("fs");
+const { dirname } = require("path");
 
 async function create(data, url) {
   let { templatePath } = data;
   if (!statSync(templatePath).isDirectory())
-    throw new Error("Invalid template.");
+    throw new Error("Invalid template directory.");
 
-  var folder = getGeneratedFolder(templatePath);
+  if (!existsSync(templatePath + "/schema.json"))
+    throw new Error("Template schema was not found.");
+  const schema = JSON.parse(
+    readFileSync(templatePath + "/schema.json", { encoding: "utf-8" })
+  );
+  if (typeof schema != "object" || schema == null)
+    throw new Error("Invalid template schema.");
 
-  for (const file in folder.files) {
-    for (const key in data) {
-      folder.files[file] = folder.files[file].replace(
-        "${" + key + "}",
-        data[key]
-      );
-    }
+  let creations = {};
+  for (let filePath in schema) {
+    let fileContent = schema[filePath];
+    if (fileContent.startsWith("file:"))
+      fileContent = readFileSync(templatePath + "/" + fileContent.slice(5), {
+        encoding: "utf-8",
+      });
+
+    creations[filePath] = fileContent.replace(
+      /\{\{([^\}]+)\}\}/g,
+      (_, key) => data[key] || "{{" + key + "}}"
+    );
   }
 
-  mkdirSync(`${url}/${data.name}`);
-  writeFolder(`${url}/${data.name}`, folder);
+  for (let creation in creations) {
+    let creationPath = url + '/' + data.name + '/' + creation;
+    mkdirSync(dirname(creationPath), { recursive: true });
+    writeFileSync(creationPath, creations[creation], { encoding: "utf-8" });
+  }
 
   return data;
 }

@@ -1,0 +1,6 @@
+{
+    "fxmanifest.lua": "file:fxmanifest.lua",
+    "client/main.lua": "",
+    "server/main.lua": "",
+    "shared/main.lua": ""
+}
