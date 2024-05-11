@@ -4,7 +4,7 @@
   "name": "fivem-resource-generator",
   "displayName": "FiveM Resource Generator",
   "description": "VSCode extension that creates a FiveM lua resource.",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.59.0"
   },
