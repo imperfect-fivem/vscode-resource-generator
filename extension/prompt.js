@@ -1,20 +1,36 @@
 const vscode = require("vscode");
-const create = require('./create.js');
-const prompts = require('./prompts.js');
+const create = require("./create.js");
+const prompts = require("./prompts.js");
+const { stat } = require("fs");
+const configuration = vscode.workspace.getConfiguration(
+  "FivemResourceGenerator"
+);
 
-function loadInputs(templatesPath, templates, resource) {
-  let template = "standalone";
+function loadInputs(templatesPath, resource) {
+  /** @type {{ [key: string]: string }} */
+  let templates = configuration.get("templates"),
+    templatePath;
   let quickPick = vscode.window.createQuickPick();
-  quickPick.items = templates.map((template) => {
+  quickPick.items = Object.keys(templates).map((template) => {
     return { label: template };
   });
   quickPick.canSelectMany = false;
   quickPick.title = "Template";
   quickPick.placeholder = "choose one...";
   quickPick.onDidAccept(function () {
-    template = quickPick.selectedItems[0].label;
-    // @ts-ignore
-    prompts["resourceName"].input.show();
+    templatePath = templates[quickPick.selectedItems[0].label].replace("::templates::", templatesPath);
+    stat(templatePath, (err, stats) => {
+      if (err) {
+        vscode.window.showErrorMessage(err.message);
+        return;
+      }
+      if (!stats.isDirectory()) {
+        vscode.window.showErrorMessage("Invalid template.");
+        return;
+      }
+      // @ts-ignore
+      prompts["resourceName"].input.show();
+    });
   });
   quickPick.show();
 
@@ -33,7 +49,7 @@ function loadInputs(templatesPath, templates, resource) {
         if (prompts[key].nextInput != "") {
           prompts[prompts[key].nextInput].input.show();
         } else {
-          create(templatesPath + "/" + template, resource);
+          create(templatePath, resource);
         }
       } else {
         vscode.window.showErrorMessage(

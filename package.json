@@ -1,4 +1,6 @@
 {
+  "publisher": "m-imperfect",
+  "author": "m-imperfect",
   "name": "fivem-resource-generator",
   "displayName": "FiveM Resource Generator",
   "description": "VSCode extension that creates a FiveM lua resource.",
@@ -9,7 +11,6 @@
   "categories": [
     "Other"
   ],
-  "author": "m-imperfect",
   "repository": {
     "type": "git",
     "url": "https://github.com/imperfect-fivem/vscode-resource-generator"
@@ -30,10 +31,25 @@
   ],
   "main": "./extension/main.js",
   "files": [
-    "template/fxmanifest.lua"
+    "templates/**"
   ],
   "directories": {},
   "contributes": {
+    "configuration": {
+      "title": "Fivem Resource Generator",
+      "properties": {
+        "FivemResourceGenerator.templates": {
+          "type": "object",
+          "scope": "machine-overridable",
+          "description": "Templates paths.",
+          "default": {
+            "standalone": "::templates::/standalone",
+            "esx": "::templates::/esx"
+          },
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
     "commands": [
       {
         "command": "resource-generator-fivem.generate-resource",
