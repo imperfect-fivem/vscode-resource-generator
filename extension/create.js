@@ -22,7 +22,8 @@ async function create(data, url) {
         encoding: "utf-8",
       });
 
-    creations[filePath] = fileContent.replace(
+      creations[filePath] = fileContent.replace(
+      // TODO: allow conditional statements
       /\{\{([^\}]+)\}\}/g,
       (_, key) => data[key] || "{{" + key + "}}"
     );

@@ -7,6 +7,11 @@ Structure: [Keep a Changelog](http://keepachangelog.com/) recommendations.
 
 - Soon...
 
+## [1.0.0] - 2024-05-11
+
+### Added
+- Templates Creation Schema
+
 ## [0.0.4] - 2024-05-09
 
 ### Added

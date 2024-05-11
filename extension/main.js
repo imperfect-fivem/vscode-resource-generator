@@ -19,6 +19,7 @@ function activate(context) {
   addInputBox("description", "Resource description", "This resource is ...");
   addInputBox("author", "Resource author", "m-imperfect, ...");
   addInputBox("version", "Resource version", "1.0.0, ...");
+  // TODO: configure prompts
 
   const templatesPath = context.extensionPath + "/templates";
   let disposable = vscode.commands.registerCommand(

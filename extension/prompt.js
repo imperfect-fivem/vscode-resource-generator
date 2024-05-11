@@ -11,6 +11,8 @@ function _setDatum(key, value) {
   else callback(data);
 }
 
+// TODO: configure defaults
+
 function addQuickPick(key, title, placeholder, itemsFetcher) {
   let quickPick = vscode.window.createQuickPick();
   quickPick.canSelectMany = false;
