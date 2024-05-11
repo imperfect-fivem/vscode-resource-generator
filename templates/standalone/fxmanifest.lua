@@ -1,7 +1,6 @@
 fx_version 'cerulean'
 game 'gta5'
 
-name "${resourceName}"
 description "${description}"
 author "${author}"
 version "${version}"

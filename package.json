@@ -27,7 +27,7 @@
     "generator"
   ],
   "activationEvents": [
-    "onCommand:resource-generator-fivem.generate-resource"
+    "onCommand:fivem-resource-generator.generate-resource"
   ],
   "main": "./extension/main.js",
   "files": [
@@ -47,6 +47,11 @@
             "esx": "::templates::/esx"
           },
           "additionalProperties": { "type": "string" }
+        },
+        "FivemResourceGenerator.defaults.author": {
+          "type": "string",
+          "editPresentation": "singlelineText",
+          "description": "Set author to this if not specified during creation."
         }
       }
     },

@@ -1,24 +1,28 @@
 const vscode = require("vscode");
-const { mkdirSync } = require("fs");
+const { mkdirSync, statSync } = require("fs");
 const { getGeneratedFolder, writeFolder } = require("./folder");
 
-function create(templatePath, url, inputs) {
+async function create(data, url) {
+  let { templatePath } = data;
+  if (!statSync(templatePath).isDirectory())
+    throw new Error("Invalid template.");
+
   var folder = getGeneratedFolder(templatePath);
 
   for (const file in folder.files) {
-    for (const key in inputs) {
+    for (const key in data) {
       folder.files[file] = folder.files[file].replace(
         "${" + key + "}",
-        inputs[key]
+        data[key]
       );
     }
   }
 
-  mkdirSync(`${url}/${inputs.resourceName}`);
-  writeFolder(`${url}/${inputs.resourceName}`, folder);
+  mkdirSync(`${url}/${data.name}`);
+  writeFolder(`${url}/${data.name}`, folder);
 
   vscode.window.showInformationMessage(
-    `Created '${inputs.resourceName}', a FiveM lua resource.`
+    `Created a FiveM lua resource '${data.name}'.`
   );
 }
 
