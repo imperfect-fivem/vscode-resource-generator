@@ -1,25 +1,24 @@
 const vscode = require("vscode");
 const { mkdirSync } = require("fs");
 const { getGeneratedFolder, writeFolder } = require("./folder");
-const prompts = require("./prompts.js");
 
-function create(templatePath, url) {
+function create(templatePath, url, inputs) {
   var folder = getGeneratedFolder(templatePath);
 
   for (const file in folder.files) {
-    for (const key in prompts) {
+    for (const key in inputs) {
       folder.files[file] = folder.files[file].replace(
         "${" + key + "}",
-        prompts[key].value
+        inputs[key]
       );
     }
   }
 
-  mkdirSync(`${url}/${prompts.resourceName.value}`);
-  writeFolder(`${url}/${prompts.resourceName.value}`, folder);
+  mkdirSync(`${url}/${inputs.resourceName}`);
+  writeFolder(`${url}/${inputs.resourceName}`, folder);
 
   vscode.window.showInformationMessage(
-    `Created '${prompts.resourceName.value}', a FiveM lua resource.`
+    `Created '${inputs.resourceName}', a FiveM lua resource.`
   );
 }
 
